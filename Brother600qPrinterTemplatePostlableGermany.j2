@@ -1,0 +1,22 @@
+  \documentclass{article}
+    \usepackage[paperheight=62mm,paperwidth=57mm, left=15mm, right=2mm, top=2mm, bottom=2mm]{geometry}
+    \usepackage{rotating}
+    \setlength{\parindent}{0pt}
+    \thispagestyle{empty}
+
+    \begin{document}
+    \begin{large}
+    \begin{turn}{90}
+        \VAR{adress['name']} \VAR{adress['surename']} \\ \\
+    \end{turn}
+    \begin{turn}{90}
+        \VAR{adress['street_and_housenumber']} \\
+    \end{turn}
+    \begin{turn}{90}
+        \VAR{adress['postalcode']} \VAR{adress['city']} \\
+    \end{turn}
+    \begin{turn}{90}
+        \VAR{adress['country']}
+    \end{turn}
+    \end{large}
+\end{document}

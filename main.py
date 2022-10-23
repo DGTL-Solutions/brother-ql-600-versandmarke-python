@@ -1,5 +1,9 @@
 from Brother600qLableGenerator import *
 
+'''
+Example
+'''
+
 lable = Brother600qLableGenerator()
 
 lable.set_adress({

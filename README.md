@@ -5,4 +5,5 @@ A simple Python Class to generate and print shipping lables with the **Brother Q
 To-Do:
 
 - [x] Connect with shopify orders API to automate the process auf printing shipping lables when getting an order
-- [ ] Automatically update status of shopify orders after printing the lable (Shopify API)  
+- [x] Automatically set order status to archived after printing the shipping lable (Shopify API)  
+- [ ] Automatically update fulfillment status of shopify order before putting into archive(Shopify API)  

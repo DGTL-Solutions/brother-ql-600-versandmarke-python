@@ -1,8 +1,6 @@
 from config import *
 import shopify
 import requests
-from pprint import pprint
-import json
 from Brother600qLableGenerator import *
 
 '''
@@ -24,19 +22,20 @@ order_list = response.json()['orders']
 
 lable = Brother600qLableGenerator()
 
-for item in order_list:
-    pprint(item['shipping_address'])
+for order in order_list:
+
+    order_id = order['id']
 
     lable.set_address({
-        "name": item['shipping_address']['first_name'],
-        "surename": item['shipping_address']['last_name'],
-        "street_and_housenumber": item['shipping_address']['address1'],
-        "postalcode": item['shipping_address']['zip'],
-        "city": item['shipping_address']['city'],
-        "country": item['shipping_address']['country']
+        "name": order['shipping_address']['first_name'],
+        "surename": order['shipping_address']['last_name'],
+        "street_and_housenumber": order['shipping_address']['address1'],
+        "postalcode": order['shipping_address']['zip'],
+        "city": order['shipping_address']['city'],
+        "country": order['shipping_address']['country']
     })
 
     lable.generate()
+    lable.print()
 
-    #lable.print() # disabled for testing
-
+    close_order_response = requests.post(f"https://{SHOP_ID}.myshopify.com/admin/api/2022-10/orders/{order_id}/close.json", headers=headers)

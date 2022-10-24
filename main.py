@@ -6,7 +6,7 @@ Example
 
 lable = Brother600qLableGenerator()
 
-lable.set_adress({
+lable.set_address({
     "name": "Testname",
     "surename": "Testnachname",
     "street_and_housenumber": "Blablubstraße 10",

@@ -27,7 +27,7 @@ lable = Brother600qLableGenerator()
 for item in order_list:
     pprint(item['shipping_address'])
 
-    lable.set_adress({
+    lable.set_address({
         "name": item['shipping_address']['first_name'],
         "surename": item['shipping_address']['last_name'],
         "street_and_housenumber": item['shipping_address']['address1'],

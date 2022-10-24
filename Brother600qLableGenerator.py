@@ -11,10 +11,10 @@ class Brother600qLableGenerator:
         env = jinja2.Environment(**env)
         self.template = env.get_template('Brother600qPrinterTemplatePostlableGermany.j2')
 
-    def set_adress(self, adress: dict) -> None:
+    def set_address(self, address: dict) -> None:
         '''
         Parameters:
-            adress (dict) = {
+            address (dict) = {
                 name: str,
                 surename: str,
                 street_and_housenumber: str,
@@ -26,7 +26,7 @@ class Brother600qLableGenerator:
             None
         '''
 
-        self.adress = adress
+        self.address = address
 
     def generate(self) -> str:
         '''Generates PDF Lable and returns path+filename'''
@@ -34,7 +34,7 @@ class Brother600qLableGenerator:
         self.latex_lable_filename = str(int(time.time())) + ".tex"
         self.filename_without_suffix = self.latex_lable_filename.replace('.tex','')
         with open(self.latex_lable_filename,"w") as latex_lable:
-           latex_lable.write(self.template.render(adress=self.adress))
+           latex_lable.write(self.template.render(address=self.address))
 
         subprocess.call(["pdflatex","-interaction nonstopmode -halt-on-error -file-line-error",self.latex_lable_filename])
         subprocess.call(["rm",self.filename_without_suffix+".log",self.filename_without_suffix+".aux",self.filename_without_suffix+".tex"])
